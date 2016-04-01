@@ -48,18 +48,32 @@ table {
 	border-spacing: 0;
 }
 /* -------------End of style reset ------------------ */
-
+html {
+	height: 100%;
+}
 body {
-	font-family: sans-serif;
+	font-family: 'Lato', sans-serif;
 	line-height: 1.15;
-	max-width: 400px;
-	margin: 10px auto;
+	max-width: 800px;
+	min-width: 320px;
+	margin: 0 auto;
 	text-align: center;
+	height: 100%;
+}
+#wrapper {
+	background-color: rgb(242, 242, 242);
+	height: 100%;
 }
 #title-area {
 	background-color: rgb(33, 88, 148);
 	color: rgb(242, 242, 242);
 	padding: 10px;
+}
+#home a {
+	color: rgb(242, 242, 242);
+}
+a {
+	text-decoration: none;
 }
 h1 {
 	font-size: 230%;
@@ -69,30 +83,20 @@ form {
 }
 #form-wrapper {
 	margin-top: 10px;
+	font-size: 120%;
 }
 input {
-	margin-bottom: 15px;
+	margin-bottom: 25px;
+	padding: 5px;
 }
-#wrapper {
-	background-color: rgb(242, 242, 242);
-}
-#small-text {
+.small-text {
 	font-size: 85%;
 }
 .required {
 	color: red;
 	margin-left: 5px;
 }
-/* The check button */
-#submit {
-	background-color: transparent;
-	background-image: url(checkmark.png);
-	border: none;
-	height: 22px;
-	width: 25px;
-	margin-top: 10px;
-}
-#time-units, #pace-units {
+#miles, #time-units, #pace-units {
 	max-width: 35px;
 }
 table, th, td{
@@ -103,4 +107,21 @@ table, th, td{
 th, td {
 	padding: 5px;
 }
-
+#error-box {
+	font-size: 85%;
+	color: rgb(232, 12, 26);
+}
+button, #submit {
+    background-color: rgb(33, 88, 148);
+    border: none;
+    color: rgb(242, 242, 242);
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+#links {
+	margin-top: 50px;
+}

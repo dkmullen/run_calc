@@ -28,8 +28,8 @@ function ViewModel() {
 		var totalSeconds = secondsPerMile * miles();
 		hours(Math.floor(totalSeconds / 3600));
 		var remainingSeconds = (totalSeconds % 3600);
-		minutes(remainingSeconds / 60);
-		seconds(remainingSeconds % 60);
+		minutes(Math.floor(remainingSeconds / 60));
+		seconds(this.pad2(Math.round(remainingSeconds % 60)));
 		
 	}
 	
@@ -59,6 +59,10 @@ function ViewModel() {
 		else {
 			this.paceCalc();
 		}
+	}
+	
+	this.formReset = function() {
+		document.getElementById('run-form').reset();
 	}
 }
 ko.applyBindings(new ViewModel());

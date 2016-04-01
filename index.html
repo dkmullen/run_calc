@@ -4,6 +4,7 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="runcalc.css">
+	<link href='https://fonts.googleapis.com/css?family=Lato:400' rel='stylesheet' type='text/css'>
 	<title>Run Calc</title>
 </head>
 
@@ -11,20 +12,25 @@
 	<div id="wrapper">
 		<div id="title-area">
 			<h1>Run Calculator</h1>
-			<p id="small-text">dkmullen.com</p>
+			<p id="home" class="small-text"><a href="http://dkmullen.com/">dkmullen.com</a></p>
 		</div>
-		<form data-bind="submit: calcMyRun">
+		<form id="run-form" data-bind="submit: calcMyRun">
+		<p id="directions" class="small-text">Fill out two measurements.<br />
+		Hit 'Submit' to calculate the third.</p><br />
 			<div id="form-wrapper">
-				Miles: <input type="number" name="miles" min="0" step="any" data-bind="value: miles" ><br>
+				Miles: <input id="miles" type="number" name="miles" min="0" step="any" data-bind="value: miles" ><br>
 				Elasped Time: 
-					<input id="time-units" type="number" name="hours" min="0" 
-						data-bind="value: hours">:<input id="time-units" type="number" name="minutes" min="0" max="59" 
-						data-bind="value: minutes">:<input id="time-units" type="number" name="seconds" min="0" max="59" 
+					<input id="time-units" type="number" name="hours" min="0" placeholder="hr" 
+						data-bind="value: hours">:<input id="time-units" type="number" name="minutes" min="0" max="59" placeholder="min" 
+						data-bind="value: minutes">:<input id="time-units" type="number" name="seconds" min="0" max="59" placeholder="sec"
 						data-bind="value: seconds"><br>
-				Pace: <input id="pace-units" type="number" name="pace" data-bind="value: paceMinutes" min="0" max="59">:<input id="pace-units" type="number" name="pace" data-bind="value: paceSeconds" min="0" max="59"><br>				
-				<input  id="submit" type="submit" value="" >
+				Pace: <input id="pace-units" type="number" name="pace" data-bind="value: paceMinutes" min="0" max="59" placeholder="min">:<input id="pace-units" type="number" name="pace" data-bind="value: paceSeconds" min="0" max="59" placeholder="sec"><br>
+				<button type="button" data-bind="click: formReset" >Reset</button>
+				<input id="submit" type="submit" value="Submit" >
 			</div>
-			<div id="error-box"</div>
+			<div id="links" class="small-text">
+				Repository: <a href = "https://github.com/dkmullen/run_calc">github.com/dkmullen/run_calc</a>
+			</div>
 		</form>
 	</div>
 
