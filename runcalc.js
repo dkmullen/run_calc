@@ -10,16 +10,55 @@ function ViewModel() {
 	this.pad2 = function(number) {
 		return (number < 10 ? '0' : '') + number
 	}
+
+	this.errorMessage = function() {
+		document.getElementById('error-box').innerHTML = 
+			'Fill out two of the three fields.';
+	}
 	
-	this.calcMyRun = function() {
-		if (hours() == undefined) {
-			hours('0');
-		}
+	this.milesCalc = function() {
+		var totalSeconds = parseInt(seconds()) + (parseInt(minutes()) * 60) + 
+			(parseInt(hours()) * 3600);
+		var secondsPerMile = parseInt(paceSeconds()) + (parseInt(paceMinutes()) * 60);
+		miles(totalSeconds / secondsPerMile);
+	}
+	
+	this.timeCalc = function() {
+		var secondsPerMile = parseInt(paceSeconds()) + (parseInt(paceMinutes()) * 60);
+		var totalSeconds = secondsPerMile * miles();
+		hours(Math.floor(totalSeconds / 3600));
+		var remainingSeconds = (totalSeconds % 3600);
+		minutes(remainingSeconds / 60);
+		seconds(remainingSeconds % 60);
+		
+	}
+	
+	this.paceCalc = function() {
 		var totalSeconds = parseInt(seconds()) + (parseInt(minutes()) * 60) + 
 			(parseInt(hours()) * 3600);
 		var secPerMile = totalSeconds / miles();
 		paceMinutes(Math.floor(secPerMile / 60));
 		paceSeconds(this.pad2(Math.round(((secPerMile / 60) - paceMinutes()) * 60)));
+	}
+
+	this.calcMyRun = function() {
+		if (hours() == undefined) {
+			hours('0');
+		}
+		if ((miles() == undefined && minutes() == undefined) ||
+			(miles() == undefined && paceMinutes() == undefined) ||
+			(minutes() == undefined && paceMinutes() == undefined)) {
+			this.errorMessage();
+		}
+		else if (miles() == undefined) {
+			this.milesCalc();
+		}
+		else if (minutes() == undefined) {
+			this.timeCalc();
+		}
+		else {
+			this.paceCalc();
+		}
 	}
 }
 ko.applyBindings(new ViewModel());
