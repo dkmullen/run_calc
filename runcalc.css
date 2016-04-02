@@ -47,6 +47,11 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+textarea, input[type="text"], input[type="button"], input[type="submit"],
+input[type="number"] {
+     -webkit-appearance: none;
+     border-radius: 0;
+}
 /* -------------End of style reset ------------------ */
 html {
 	height: 100%;
@@ -69,7 +74,10 @@ body {
 	background-color: rgb(33, 88, 148);
 	color: rgb(242, 242, 242);
 	padding: 10px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+}
+.small-text {
+	font-size: 85%;
 }
 #home a {
 	color: rgb(242, 242, 242);
@@ -79,27 +87,26 @@ h1 {
 	font-size: 230%;
 }
 #directions {
-	margin-bottom: 10px;
-}
-form {
-	padding: 20px 0 10px 0;
+	margin-bottom: 5px;
 }
 #form-wrapper {
-	margin-top: 10px;
 	font-size: 120%;
 }
-input {
-	margin-bottom: 30px;
+input[type="number"] {
+	margin: 5px 0 20px 0;
 	padding: 5px;
+	font-size: 90%;
+	text-align: center;
+	border: 1px solid black;
 }
-.small-text {
-	font-size: 85%;
+#time-units, #pace-units {
+	width: 60px;
 }
-#miles, #time-units, #pace-units {
-	max-width: 40px;
+#miles {
+	width: 60px;
 }
 #button-wrapper {
-	margin-top: 30px;
+	margin-top: 20px;
 }
 button, #submit {
     background-color: rgb(33, 88, 148);

@@ -11,6 +11,10 @@ function ViewModel() {
 	this.pad2 = function(number) {
 		return (number < 10 ? '0' : '') + number
 	}
+	
+	this.roundToTwo = function(num) {    
+		return +(Math.round(num + 'e+2')  + 'e-2');
+	}
 
 	this.milesCalc = function() {
 		if (seconds() == undefined) {
@@ -23,7 +27,8 @@ function ViewModel() {
 			(parseInt(hours()) * 3600);
 		var secondsPerMile = parseInt(paceSeconds()) + (parseInt(paceMinutes()) 
 			* 60);
-		miles(totalSeconds / secondsPerMile);
+		var num = this.roundToTwo(totalSeconds / secondsPerMile);
+		miles(num);
 	}
 	
 	this.timeCalc = function() {
@@ -112,4 +117,6 @@ if (number < 10) {
 	else {
 		return '' + number;
 	}
+	
+http://stackoverflow.com/questions/11832914/round-to-at-most-2-decimal-places-in-javascript
 */

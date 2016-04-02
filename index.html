@@ -3,6 +3,7 @@
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="../favicon.png" sizes="32x32" type="image/png"> 
 	<link rel="stylesheet" href="runcalc.css">
 	<link href='https://fonts.googleapis.com/css?family=Lato:400' rel='stylesheet' type='text/css'>
 	<title>Run Calc</title>
@@ -18,13 +19,15 @@
 		<p id="directions" class="small-text" data-bind="style: { color: errorMessage() == true ? 'red' : 'black' }">Fill out two measurements.<br />
 		Hit 'Submit' to calculate the third.</p><br />
 			<div id="form-wrapper">
-				Miles: <input id="miles" type="number" name="miles" min="0" step="any" data-bind="value: miles" ><br>
-				Time: 
+				<p>Miles:</p>
+				<input id="miles" type="number" name="miles" min="0" step="any" data-bind="value: miles" ><br>
+				<p>Elapsed Time:</p> 
 					<input id="time-units" type="number" name="hours" min="0" placeholder="hr" 
 						data-bind="value: hours">:<input id="time-units" type="number" name="minutes" min="0" max="59" placeholder="min" 
 						data-bind="value: minutes">:<input id="time-units" type="number" name="seconds" min="0" max="59" placeholder="sec"
 						data-bind="value: seconds"><br>
-				Pace: <input id="pace-units" type="number" name="pace" data-bind="value: paceMinutes" min="0" max="59" placeholder="min">:<input id="pace-units" type="number" name="pace" data-bind="value: paceSeconds" min="0" max="59" placeholder="sec"><br>
+				<p>Pace:</p>
+				<input id="pace-units" type="number" name="pace" data-bind="value: paceMinutes" min="0" max="59" placeholder="min">:<input id="pace-units" type="number" name="pace" data-bind="value: paceSeconds" min="0" max="59" placeholder="sec"><br>
 				<div id="button-wrapper">
 					<button type="button" data-bind="click: formReset" >Reset</button>
 					<input id="submit" type="submit" value="Submit" >
