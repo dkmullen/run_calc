@@ -13,14 +13,25 @@ function ViewModel() {
 	}
 
 	this.milesCalc = function() {
+		if (seconds() == undefined) {
+			seconds('00');
+		}
+		if (paceSeconds() == undefined) {
+			paceSeconds('00');
+		}
 		var totalSeconds = parseInt(seconds()) + (parseInt(minutes()) * 60) + 
 			(parseInt(hours()) * 3600);
-		var secondsPerMile = parseInt(paceSeconds()) + (parseInt(paceMinutes()) * 60);
+		var secondsPerMile = parseInt(paceSeconds()) + (parseInt(paceMinutes()) 
+			* 60);
 		miles(totalSeconds / secondsPerMile);
 	}
 	
 	this.timeCalc = function() {
-		var secondsPerMile = parseInt(paceSeconds()) + (parseInt(paceMinutes()) * 60);
+		if (paceSeconds() == undefined) {
+			paceSeconds('00');
+		}
+		var secondsPerMile = parseInt(paceSeconds()) + (parseInt(paceMinutes()) 
+			* 60);
 		var totalSeconds = secondsPerMile * miles();
 		hours(Math.floor(totalSeconds / 3600));
 		var remainingSeconds = (totalSeconds % 3600);
@@ -30,11 +41,15 @@ function ViewModel() {
 	}
 	
 	this.paceCalc = function() {
+		if (seconds() == undefined) {
+			seconds('00');
+		}
 		var totalSeconds = parseInt(seconds()) + (parseInt(minutes()) * 60) + 
 			(parseInt(hours()) * 3600);
 		var secPerMile = totalSeconds / miles();
 		paceMinutes(Math.floor(secPerMile / 60));
-		paceSeconds(this.pad2(Math.round(((secPerMile / 60) - paceMinutes()) * 60)));
+		paceSeconds(this.pad2(Math.round(((secPerMile / 60) - paceMinutes()) 
+			* 60)));
 		if (paceSeconds() == 60) {
 			var x = paceMinutes();
 			paceMinutes(x+1);
@@ -43,10 +58,18 @@ function ViewModel() {
 	}
 
 	this.calcMyRun = function() {
+		if ((hours() !== undefined && minutes() == undefined)) {
+			minutes('0');
+		}
+		if ((hours() !== undefined && seconds() == undefined)) {
+			seconds('00');
+		}
 		if (hours() == undefined) {
 			hours('0');
 		}
-		if ((miles() == undefined && minutes() == undefined) ||
+		
+		
+		if ((miles() == undefined && minutes() == undefined) || 
 			(miles() == undefined && paceMinutes() == undefined) ||
 			(minutes() == undefined && paceMinutes() == undefined)) {
 			errorMessage(true);
@@ -66,6 +89,12 @@ function ViewModel() {
 	}
 	
 	this.formReset = function() {
+		miles(undefined);
+		hours(undefined);
+		minutes(undefined);
+		seconds(undefined);
+		paceMinutes(undefined);
+		paceSeconds(undefined);
 		errorMessage(false);
 		document.getElementById('run-form').reset();
 	}

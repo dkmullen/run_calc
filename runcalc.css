@@ -73,8 +73,6 @@ body {
 }
 #home a {
 	color: rgb(242, 242, 242);
-}
-a {
 	text-decoration: none;
 }
 h1 {
@@ -97,20 +95,8 @@ input {
 .small-text {
 	font-size: 85%;
 }
-.required {
-	color: red;
-	margin-left: 5px;
-}
 #miles, #time-units, #pace-units {
 	max-width: 40px;
-}
-table, th, td{
-	border: 1px solid rgb(33, 88, 148);
-	font-size: 85%;
-	margin: 0 auto;
-}
-th, td {
-	padding: 5px;
 }
 #button-wrapper {
 	margin-top: 30px;
