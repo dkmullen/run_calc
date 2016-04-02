@@ -39,6 +39,11 @@ function ViewModel() {
 		var secPerMile = totalSeconds / miles();
 		paceMinutes(Math.floor(secPerMile / 60));
 		paceSeconds(this.pad2(Math.round(((secPerMile / 60) - paceMinutes()) * 60)));
+		if (paceSeconds() == 60) {
+			var x = paceMinutes();
+			paceMinutes(x+1);
+			paceSeconds(this.pad2(0));
+		}
 	}
 
 	this.calcMyRun = function() {

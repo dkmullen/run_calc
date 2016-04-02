@@ -68,6 +68,7 @@ body {
 	background-color: rgb(33, 88, 148);
 	color: rgb(242, 242, 242);
 	padding: 10px;
+	margin-bottom: 10px;
 }
 #home a {
 	color: rgb(242, 242, 242);
@@ -78,6 +79,9 @@ a {
 h1 {
 	font-size: 230%;
 }
+#directions {
+	margin-bottom: 10px;
+}
 form {
 	padding: 20px 0 10px 0;
 }
@@ -86,7 +90,7 @@ form {
 	font-size: 120%;
 }
 input {
-	margin-bottom: 25px;
+	margin-bottom: 30px;
 	padding: 5px;
 }
 .small-text {
@@ -97,7 +101,7 @@ input {
 	margin-left: 5px;
 }
 #miles, #time-units, #pace-units {
-	max-width: 35px;
+	max-width: 40px;
 }
 table, th, td{
 	border: 1px solid rgb(33, 88, 148);
@@ -107,9 +111,8 @@ table, th, td{
 th, td {
 	padding: 5px;
 }
-#error-box {
-	font-size: 85%;
-	color: rgb(232, 12, 26);
+#button-wrapper {
+	margin-top: 30px;
 }
 button, #submit {
     background-color: rgb(33, 88, 148);
@@ -124,4 +127,24 @@ button, #submit {
 }
 #links {
 	margin-top: 50px;
+}
+
+@media only screen and (min-height: 500px) {
+	#title-area, input {
+		margin-bottom: 30px;
+	}
+	#directions {
+		margin-bottom: 25px;
+	}
+}
+@media only screen and (min-height: 600px) {
+	#title-area, input {
+		margin-bottom: 40px;
+	}
+	#directions {
+		margin-bottom: 60px;
+	}
+	#button-wrapper {
+		margin-top: 50px;
+	}
 }
