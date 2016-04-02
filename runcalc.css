@@ -59,6 +59,7 @@ body {
 	margin: 0 auto;
 	text-align: center;
 	height: 100%;
+	max-height: 740px;
 }
 #wrapper {
 	background-color: rgb(242, 242, 242);
@@ -146,5 +147,25 @@ button, #submit {
 	}
 	#button-wrapper {
 		margin-top: 50px;
+	}
+	.small-text {
+		font-size: 100%;
+	}
+}
+@media only screen and (min-height: 700px) {
+	body {
+		font-size: 110%;
+	}
+	#title-area, input {
+		margin-bottom: 50px;
+	}
+	#directions {
+		margin-bottom: 60px;
+	}
+	#button-wrapper {
+		margin-top: 50px;
+	}
+	.small-text {
+		font-size: 100%;
 	}
 }

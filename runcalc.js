@@ -4,6 +4,7 @@ var minutes = ko.observable();
 var seconds = ko.observable();
 var paceMinutes = ko.observable();
 var paceSeconds = ko.observable();
+var errorMessage = ko.observable(false);
 
 function ViewModel() {
 	
@@ -11,11 +12,6 @@ function ViewModel() {
 		return (number < 10 ? '0' : '') + number
 	}
 
-	this.errorMessage = function() {
-		document.getElementById('error-box').innerHTML = 
-			'Fill out two of the three fields.';
-	}
-	
 	this.milesCalc = function() {
 		var totalSeconds = parseInt(seconds()) + (parseInt(minutes()) * 60) + 
 			(parseInt(hours()) * 3600);
@@ -53,20 +49,24 @@ function ViewModel() {
 		if ((miles() == undefined && minutes() == undefined) ||
 			(miles() == undefined && paceMinutes() == undefined) ||
 			(minutes() == undefined && paceMinutes() == undefined)) {
-			this.errorMessage();
+			errorMessage(true);
 		}
 		else if (miles() == undefined) {
+			errorMessage(false);
 			this.milesCalc();
 		}
 		else if (minutes() == undefined) {
+			errorMessage(false);
 			this.timeCalc();
 		}
 		else {
+			errorMessage(false);
 			this.paceCalc();
 		}
 	}
 	
 	this.formReset = function() {
+		errorMessage(false);
 		document.getElementById('run-form').reset();
 	}
 }
