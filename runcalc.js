@@ -8,14 +8,71 @@ var errorMessage = ko.observable(false);
 
 function ViewModel() {
 	
-	this.pad2 = function(number) {
-		return (number < 10 ? '0' : '') + number
+	/**
+	 * Main function of the app, called by knockout.js data-bind on the 'Submit'
+	 * button in the DOM. Checks that data has been entered for two of the 
+	 * three categories (miles, elapsed time, pace). Specifically checks for
+	 * miles, elapsed minutes and pace minutes, but if user enters elapsed 
+	 * hours, minutes and seconds are filled in with zero. Likewise if user
+	 * enters only pace minutes. Entering only seconds or pace seconds throws
+	 * the error message. Finally, calls the function for the missing field.
+	 @function
+	 */
+	this.calcMyRun = function() {
+		if ((hours() !== undefined && minutes() == undefined)) {
+			minutes('00');
+		}
+		if ((hours() !== undefined && seconds() == undefined)) {
+			seconds('00');
+		}
+		if (hours() == undefined && minutes() !== undefined) {
+			hours('0');
+		}
+		if ((miles() == undefined && minutes() == undefined) || 
+			(miles() == undefined && paceMinutes() == undefined) ||
+			(minutes() == undefined && paceMinutes() == undefined)) {
+			/** Uses a ko.observable in HTML to change color if true */
+			errorMessage(true);
+		}
+		else if (miles() == undefined) {
+			/** In case err message was red from previous try, this resets it */
+			errorMessage(false);
+			this.milesCalc();
+		}
+		else if (minutes() == undefined) {
+			errorMessage(false);
+			this.timeCalc();
+		}
+		else {
+			errorMessage(false);
+			this.paceCalc();
+		}
 	}
 	
-	this.roundToTwo = function(num) {    
+	/**
+	 * Helper function to produce two digit numbers (credit at bottom of file)
+	 * If number < 10, adds a '0' to the front, otherwise adds empty string
+	 * @function
+	 * @param {number} num - Passed in from other functions
+	 */
+	this.pad2 = function(num) {
+		return (num < 10 ? '0' : '') + num;
+	}
+	
+	/**
+	 * Helper function to round decimals to two places (credit at bottom)
+	 * Multiplies num by 10 to the power of 2, rounds it, 'pulls' the decimal
+	 * back two places by multiplying by 10 to the minus 2
+	 * @function
+	 * @param {number} num - Passed in from other functions
+	 */
+	this.roundToTwo = function(num) {
 		return +(Math.round(num + 'e+2')  + 'e-2');
 	}
-
+	
+	/**
+	 * Function to calculate the miles field, called by calcMyRun. 
+	 */
 	this.milesCalc = function() {
 		if (seconds() == undefined) {
 			seconds('00');
@@ -62,36 +119,7 @@ function ViewModel() {
 		}
 	}
 
-	this.calcMyRun = function() {
-		if ((hours() !== undefined && minutes() == undefined)) {
-			minutes('00');
-		}
-		if ((hours() !== undefined && seconds() == undefined)) {
-			seconds('00');
-		}
-		if (hours() == undefined && minutes() !== undefined) {
-			hours('0');
-		}
-		
-		
-		if ((miles() == undefined && minutes() == undefined) || 
-			(miles() == undefined && paceMinutes() == undefined) ||
-			(minutes() == undefined && paceMinutes() == undefined)) {
-			errorMessage(true);
-		}
-		else if (miles() == undefined) {
-			errorMessage(false);
-			this.milesCalc();
-		}
-		else if (minutes() == undefined) {
-			errorMessage(false);
-			this.timeCalc();
-		}
-		else {
-			errorMessage(false);
-			this.paceCalc();
-		}
-	}
+
 	
 	this.formReset = function() {
 		miles(undefined);
