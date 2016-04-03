@@ -64,12 +64,12 @@ function ViewModel() {
 
 	this.calcMyRun = function() {
 		if ((hours() !== undefined && minutes() == undefined)) {
-			minutes('0');
+			minutes('00');
 		}
 		if ((hours() !== undefined && seconds() == undefined)) {
 			seconds('00');
 		}
-		if (hours() == undefined) {
+		if (hours() == undefined && minutes() !== undefined) {
 			hours('0');
 		}
 		
