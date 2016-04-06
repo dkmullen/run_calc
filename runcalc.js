@@ -20,30 +20,30 @@ function ViewModel() {
 	 @function
 	 */
 	this.calcMyRun = function() {
-		if ((hours() !== undefined && minutes() == undefined)) {
+		if ((hours() !== undefined && minutes() === undefined)) {
 			minutes('00');
 		}
-		if (hours() == undefined && minutes() !== undefined) {
+		if (hours() === undefined && minutes() !== undefined) {
 			hours('0');
 		}
 		
-		if ((miles() == undefined && minutes() == undefined) || 
-			(miles() == undefined && paceMinutes() == undefined) ||
-			(minutes() == undefined && paceMinutes() == undefined)) {
+		if ((miles() === undefined && minutes() === undefined) || 
+			(miles() === undefined && paceMinutes() === undefined) ||
+			(minutes() === undefined && paceMinutes() === undefined)) {
 			/** Uses a ko.observable in HTML to change color if true */
 			errorMessage(true);
-		} else if (miles() == undefined) {
+		} else if (miles() === undefined) {
 			/** In case err message was red from previous try, this resets it */
 			errorMessage(false);
 			this.milesCalc();
-		} else if (minutes() == undefined) {
+		} else if (minutes() === undefined) {
 			errorMessage(false);
 			this.timeCalc();
 		} else {
 			errorMessage(false);
 			this.paceCalc();
 		}
-	}
+	};
 	
 	/**
 	 * Helper function to produce two digit numbers (credit at bottom of file)
@@ -54,7 +54,7 @@ function ViewModel() {
 	 */
 	this.pad2 = function(num) {
 		return (num < 10 ? '0' : '') + num;
-	}
+	};
 	
 	/**
 	 * Helper function to round decimals to two places (credit at bottom)
@@ -66,7 +66,7 @@ function ViewModel() {
 	 */
 	this.roundToTwo = function(num) {
 		return +(Math.round(num + 'e+2')  + 'e-2');
-	}
+	};
 	
 	/**
 	 * Function to calculate the miles field, called by calcMyRun. Fills in
@@ -77,19 +77,19 @@ function ViewModel() {
 	 * @function
 	 */
 	this.milesCalc = function() {
-		if (seconds() == undefined) {
+		if (seconds() === undefined) {
 			seconds('00');
 		}
-		if (paceSeconds() == undefined) {
+		if (paceSeconds() === undefined) {
 			paceSeconds('00');
 		}
 		var totalSeconds = parseInt(seconds()) + (parseInt(minutes()) * 60) + 
 			(parseInt(hours()) * 3600);
-		var secondsPerMile = parseInt(paceSeconds()) + (parseInt(paceMinutes()) 
-			* 60);
+		var secondsPerMile = parseInt(paceSeconds()) + 
+			(parseInt(paceMinutes()) * 60);
 		var num = this.roundToTwo(totalSeconds / secondsPerMile);
 		miles(num);
-	}
+	};
 	
 	/** 
 	 * Function to calculate elapsed time, called by calcMyRun. Fills in 
@@ -101,18 +101,18 @@ function ViewModel() {
 	 * @function
 	 */
 	this.timeCalc = function() {
-		if (paceSeconds() == undefined) {
+		if (paceSeconds() === undefined) {
 			paceSeconds('00');
 		}
-		var secondsPerMile = parseInt(paceSeconds()) + (parseInt(paceMinutes()) 
-			* 60);
+		var secondsPerMile = parseInt(paceSeconds()) + 
+			(parseInt(paceMinutes()) * 60);
 		var totalSeconds = secondsPerMile * miles();
 		hours(Math.floor(totalSeconds / 3600));
 		var remainingSeconds = (totalSeconds % 3600);
 		minutes(Math.floor(remainingSeconds / 60));
 		seconds(this.pad2(Math.round(remainingSeconds % 60)));
 		
-	}
+	};
 
 	/** 
 	 * Function to calculate pace, called by calcMyRun. Fills in seconds with
@@ -126,21 +126,21 @@ function ViewModel() {
 	 * @function
 	 */	
 	this.paceCalc = function() {
-		if (seconds() == undefined) {
+		if (seconds() === undefined) {
 			seconds('00');
 		}
 		var totalSeconds = parseInt(seconds()) + (parseInt(minutes()) * 60) + 
 			(parseInt(hours()) * 3600);
 		var secPerMile = totalSeconds / miles();
 		paceMinutes(Math.floor(secPerMile / 60));
-		paceSeconds(this.pad2(Math.round(((secPerMile / 60) - paceMinutes()) 
-			* 60)));
+		paceSeconds(this.pad2(Math.round(((secPerMile / 60) - 
+			paceMinutes()) * 60)));
 		if (paceSeconds() == 60) {
 			var x = paceMinutes();
 			paceMinutes(x+1);
 			paceSeconds(this.pad2(0));
 		}
-	}
+	};
 
 	/** 
 	 * Function to reset form in DOM, set all fields to undefined so no data
@@ -156,7 +156,7 @@ function ViewModel() {
 		paceSeconds(undefined);
 		errorMessage(false);
 		document.getElementById('run-form').reset();
-	}
+	};
 }
 ko.applyBindings(new ViewModel());
 
