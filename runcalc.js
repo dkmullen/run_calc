@@ -20,7 +20,7 @@ function ViewModel() {
 	 @function
 	 */
 	this.calcMyRun = function() {
-		if ((hours() !== undefined && minutes() === undefined)) {
+		if (hours() !== undefined && minutes() === undefined) {
 			minutes('00');
 		}
 		if (hours() === undefined && minutes() !== undefined) {
@@ -104,6 +104,10 @@ function ViewModel() {
 		if (paceSeconds() === undefined) {
 			paceSeconds('00');
 		}
+		//pads paceSeconds with a leading zero if user enters a single digit
+		if (paceSeconds() < 10 && paceSeconds().length < 2) {
+			paceSeconds(this.pad2(paceSeconds()));
+		}
 		var secondsPerMile = parseInt(paceSeconds()) + 
 			(parseInt(paceMinutes()) * 60);
 		var totalSeconds = secondsPerMile * miles();
@@ -129,13 +133,17 @@ function ViewModel() {
 		if (seconds() === undefined) {
 			seconds('00');
 		}
+		//pads seconds with a leading zero if user enters a single digit
+		if (seconds() < 10 && seconds().length < 2) {
+			seconds(this.pad2(seconds()));
+		}
 		var totalSeconds = parseInt(seconds()) + (parseInt(minutes()) * 60) + 
 			(parseInt(hours()) * 3600);
 		var secPerMile = totalSeconds / miles();
 		paceMinutes(Math.floor(secPerMile / 60));
 		paceSeconds(this.pad2(Math.round(((secPerMile / 60) - 
 			paceMinutes()) * 60)));
-		if (paceSeconds() == 60) {
+		if (paceSeconds() === 60) {
 			var x = paceMinutes();
 			paceMinutes(x+1);
 			paceSeconds(this.pad2(0));

@@ -72,19 +72,19 @@ body {
 }
 #title-area {
 	background-color: rgb(33, 88, 148);
-	color: rgb(242, 242, 242);
+	color: rgb(255, 255, 255);
 	padding: 10px;
 	margin-bottom: 20px;
+}
+h1 {
+	font-size: 230%;
 }
 .small-text {
 	font-size: 85%;
 }
 #home a {
-	color: rgb(242, 242, 242);
+	color: rgb(255, 255, 255);
 	text-decoration: none;
-}
-h1 {
-	font-size: 230%;
 }
 #directions {
 	margin-bottom: 5px;
