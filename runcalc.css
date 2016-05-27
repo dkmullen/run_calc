@@ -99,10 +99,10 @@ input[type="number"] {
 	text-align: center;
 	border: 1px solid black;
 }
-#time-units, #pace-units {
+#miles {
 	width: 60px;
 }
-#miles {
+#time-units, #pace-units {
 	width: 60px;
 }
 #button-wrapper {
@@ -111,7 +111,7 @@ input[type="number"] {
 button, #submit {
     background-color: rgb(33, 88, 148);
     border: none;
-    color: rgb(242, 242, 242);
+    color: rgb(255, 255, 255);
     padding: 15px 25px;
     text-align: center;
     text-decoration: none;
@@ -119,9 +119,6 @@ button, #submit {
     font-size: 16px;
     margin: 4px 2px;
 	cursor: pointer;
-}
-#links {
-	margin-top: 50px;
 }
 
 @media only screen and (min-height: 500px) {
@@ -136,14 +133,14 @@ button, #submit {
 	#title-area, input {
 		margin-bottom: 40px;
 	}
+	.small-text {
+		font-size: 100%;
+	}
 	#directions {
 		margin-bottom: 60px;
 	}
 	#button-wrapper {
 		margin-top: 50px;
-	}
-	.small-text {
-		font-size: 100%;
 	}
 }
 @media only screen and (min-height: 700px) {
@@ -153,14 +150,14 @@ button, #submit {
 	#title-area, input {
 		margin-bottom: 50px;
 	}
+	.small-text {
+		font-size: 100%;
+	}
 	#directions {
 		margin-bottom: 60px;
 	}
 	#button-wrapper {
 		margin-top: 50px;
-	}
-	.small-text {
-		font-size: 100%;
 	}
 }
 @media only screen and (min-height: 850px) {
@@ -170,22 +167,22 @@ button, #submit {
 	#title-area, input {
 		margin-bottom: 80px;
 	}
-	#directions {
-		margin-bottom: 70px;
-	}
-	#button-wrapper {
-		margin-top: 80px;
-	}
 	.small-text {
 		font-size: 100%;
+	}
+	#directions {
+		margin-bottom: 70px;
 	}
 	input[type="number"] {
 		margin: 10px 0 25px 0;
 	}
-	button, #submit {
-		font-size: 20px;
-	}
 	#miles {
 		width: 80px;
+	}
+	#button-wrapper {
+		margin-top: 80px;
+	}
+	button, #submit {
+		font-size: 20px;
 	}
 }
