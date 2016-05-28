@@ -143,9 +143,8 @@ function ViewModel() {
 		paceMinutes(Math.floor(secPerMile / 60));
 		paceSeconds(this.pad2(Math.round(((secPerMile / 60) - 
 			paceMinutes()) * 60)));
-		if (paceSeconds() === 60) {
-			var x = paceMinutes();
-			paceMinutes(x+1);
+		if (paceSeconds() === '60') {
+			paceMinutes(paceMinutes() + 1);
 			paceSeconds(this.pad2(0));
 		}
 	};
