@@ -7,7 +7,7 @@ var paceSeconds = ko.observable();
 var errorMessage = ko.observable(false);
 
 function ViewModel() {
-	
+
 	/**
 	 * Main function of the app, called by knockout.js data-bind on the 'Submit'
 	 * button in the DOM. Checks that data has been entered for two of the 

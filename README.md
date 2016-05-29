@@ -1,5 +1,10 @@
 # Run Calculator
 A personal project developing a basic app to calculate the distance, elapsed time or pace of a run
+
+## Issues:
+Mobile Safari doesn't recognize a `'max'` or `'min'` value for `input type="number"`
+Mobile Safari doesn't limit characters to digits and the decimal point for `input type="number"`
+
 ### Dependencies
 
 - [knockout.js](https://http://knockoutjs.com/) 

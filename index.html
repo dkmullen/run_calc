@@ -23,11 +23,11 @@
 				<input id="miles" type="number" name="miles" min="0" step="any" data-bind="value: miles" ><br>
 				<p>Elapsed Time:</p> 
 					<input id="time-units" type="number" name="hours" min="0" placeholder="hr" 
-						data-bind="value: hours">:<input id="time-units" type="number" name="minutes" min="0" max="59" placeholder="min" 
-						data-bind="value: minutes">:<input id="time-units" type="number" name="seconds" min="0" max="59" placeholder="sec"
+						data-bind="value: hours"> : <input id="time-units" type="number" name="minutes" min="0" max="59"  placeholder="min" 
+						data-bind="value: minutes"> : <input id="time-units" type="number" name="seconds" min="0" max="59" placeholder="sec"
 						data-bind="value: seconds"><br>
 				<p>Pace:</p>
-				<input id="pace-units" type="number" name="pace" data-bind="value: paceMinutes" min="0" max="59" placeholder="min">:<input id="pace-units" type="number" name="pace" data-bind="value: paceSeconds" min="0" max="59" placeholder="sec"><br>
+				<input id="pace-units" type="number" name="pace" data-bind="value: paceMinutes" min="0" max="59" placeholder="min"> : <input id="pace-units" type="number" name="pace" data-bind="value: paceSeconds" min="0" max="59" placeholder="sec"><br>
 				<div id="button-wrapper">
 					<button type="button" data-bind="click: formReset" >Reset</button>
 					<input id="submit" type="submit" value="Submit" >
