@@ -7,7 +7,7 @@ Mobile Safari doesn't limit characters to digits and the decimal point for `inpu
 
 ### Dependencies
 
-- [knockout.js](https://http://knockoutjs.com/) 
+- [knockout.js](https://http://knockoutjs.com/)
 
 ### Credits
 
