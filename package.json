@@ -1,0 +1,24 @@
+{
+  "name": "run-calc",
+  "version": "1.0.0",
+  "description": "Run calculator - solves for time, pace or distance",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dkmullen/run_calc.git"
+  },
+  "author": "DKM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dkmullen/run_calc/issues"
+  },
+  "homepage": "https://github.com/dkmullen/run_calc#readme",
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-watch": "^4.3.11"
+  }
+}
